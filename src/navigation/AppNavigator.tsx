@@ -1,23 +1,31 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, NavigationProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { RootStackParamList, MeditationItem, CourseItem } from '../types';
 
 // Screens
 import LoginScreen from '../screens/LoginScreen';
-import IndexScreen from '../screens/IndexScreen'; // Meditation Home
+import IndexScreen from '../screens/IndexScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import LibraryScreen from '../screens/LibraryScreen';
 import MoreScreen from '../screens/MoreScreen';
 import DetailScreen from '../screens/DetailScreen';
-import CourseDetailScreen from '../screens/CourseDetailScreen'; // Meditation Details Screen
+import CourseDetailScreen from '../screens/CourseDetailScreen';
 
-// Stack and Tab Navigator
-const Stack = createNativeStackNavigator();
+// Typed navigators
+const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
-// Tab Navigator for Screens with Footer
+// Add type for tab routes
+type TabParamList = {
+  Home: undefined;
+  Explore: undefined;
+  Library: undefined;
+  More: undefined;
+};
+
 const TabNavigator = () => {
   return (
     <Tab.Navigator
@@ -57,41 +65,39 @@ const TabNavigator = () => {
   );
 };
 
-// Main Navigator
 const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
-        {/* Login Screen */}
         <Stack.Screen
           name="Login"
           component={LoginScreen}
           options={{ headerShown: false }}
         />
 
-        {/* Tab Navigator */}
         <Stack.Screen
           name="Main"
           component={TabNavigator}
           options={{ headerShown: false }}
         />
 
-        {/* Detail Screen */}
         <Stack.Screen
           name="Detail"
           component={DetailScreen}
-          options={{
-            headerShown: true, // Show header for detail screen
-            title: 'Meditation Details', // Title for the detail screen
-          }}
+          options={({ route }) => ({ 
+            title: route.params.meditation.title || 'Meditation Details',
+            headerBackTitle: 'Back'
+          })}
         />
 
         <Stack.Screen
           name="CourseDetail"
           component={CourseDetailScreen}
-          options={{ title: 'Course Details' }}
+          options={({ route }) => ({
+            title: route.params.course.title || 'Course Details',
+            headerBackTitle: 'Back'
+          })}
         />
-
       </Stack.Navigator>
     </NavigationContainer>
   );

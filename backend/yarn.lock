@@ -1105,9 +1105,9 @@
     webpack "5.98.0"
     webpack-node-externals "3.0.0"
 
-"@nestjs/common@^11.0.1":
+"@nestjs/common@^11.0.10":
   version "11.0.10"
-  resolved "https://registry.npmjs.org/@nestjs/common/-/common-11.0.10.tgz"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-11.0.10.tgz#c300168171896d0ae7d189e5237ab6c30d1b64ef"
   integrity sha512-pzGXp14KF2Q4CDZGQgPK4l8zEg7i6cNkb+10yc8ZA5K41cLe3ZbWW1YxtY2e/glHauOJwTLSVjH4tiRVtOTizg==
   dependencies:
     uid "2.0.2"
@@ -1123,9 +1123,9 @@
     dotenv-expand "12.0.1"
     lodash "4.17.21"
 
-"@nestjs/core@^11.0.1":
+"@nestjs/core@^11.0.10":
   version "11.0.10"
-  resolved "https://registry.npmjs.org/@nestjs/core/-/core-11.0.10.tgz"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-11.0.10.tgz#d75ecbf0a51e3be194c0827812a474d6e97d1c4a"
   integrity sha512-f0qB8ztNWZeAD4E4fUdHConmNYCa/A78U7WJu5mX9OLYfOAs3ESYCDfsH9MRUvkA4Ft4Y1uMmyJo5L4fg4+beg==
   dependencies:
     uid "2.0.2"
@@ -1135,9 +1135,9 @@
     path-to-regexp "8.2.0"
     tslib "2.8.1"
 
-"@nestjs/platform-express@^11.0.1":
+"@nestjs/platform-express@^11.0.10":
   version "11.0.10"
-  resolved "https://registry.npmjs.org/@nestjs/platform-express/-/platform-express-11.0.10.tgz"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-11.0.10.tgz#e11204a517a10579e59ab270194e5bae8df593a1"
   integrity sha512-UVSf0yaWFBC2Zn2FOWABXxCnyG8XNIXrNnvTFpbUFqaJu1YDdwJ7wQBBqxq9CtJT7ILqSmfhOU7HS0d/0EAxpw==
   dependencies:
     cors "2.8.5"
@@ -1199,7 +1199,7 @@
 
 "@prisma/client@^6.4.1":
   version "6.4.1"
-  resolved "https://registry.npmjs.org/@prisma/client/-/client-6.4.1.tgz"
+  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-6.4.1.tgz#2666796c862e71eb2a6f39e30b192236893e07d3"
   integrity sha512-A7Mwx44+GVZVexT5e2GF/WcKkEkNNKbgr059xpr5mn+oUm2ZW1svhe+0TRNBwCdzhfIZ+q23jEgsNPvKD9u+6g==
 
 "@prisma/debug@6.4.1":
@@ -5836,6 +5836,7 @@ word-wrap@^1.2.5:
   integrity sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==

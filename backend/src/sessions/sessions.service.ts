@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { Session } from '@prisma/client';
-import { CreateSessionDto } from './dto/create-session-dto';
+import { CreateSessionDto } from './dto/create-session.dto';
 
 @Injectable()
 export class SessionsService {
@@ -18,5 +18,9 @@ export class SessionsService {
         courseId: data.courseId,
       },
     });
+  }
+
+  async findAll(): Promise<Session[]> {
+    return this.prisma.session.findMany();
   }
 }
