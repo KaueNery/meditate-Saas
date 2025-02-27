@@ -10,4 +10,5 @@ export class CoursesController {
   async findAll(): Promise<Course[]> {
     return this.coursesService.findAll();
   }
+  
 }
