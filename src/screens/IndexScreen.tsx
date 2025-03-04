@@ -15,6 +15,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { getSessions, getCourses } from '../services/api';
 import { MeditationItem, CourseItem, RootStackParamList } from '../types';
 import type { NavigationProp } from '@react-navigation/native';
+import { useAuth } from '../context/AuthContext';
 
 const { width } = Dimensions.get('window');
 
@@ -113,6 +114,15 @@ const IndexScreen = () => {
   const [coursesData, setCoursesData] = useState<CourseItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { user } = useAuth();
+
+  if (!user) {
+    return (
+      <View style={styles.errorContainer}>
+        <Text style={styles.errorText}>You need to log in to access this page.</Text>
+      </View>
+    );
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -191,6 +201,7 @@ const IndexScreen = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.sectionTitle}>Welcome, {user.email}!</Text>
       <Text style={[styles.sectionTitle, { marginTop: 30 }]}>SERENITY</Text>
       <Text style={styles.sectionSubtitle}>Single Sessions</Text>
       <Carousel

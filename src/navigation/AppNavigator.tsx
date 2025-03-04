@@ -13,6 +13,7 @@ import LibraryScreen from '../screens/LibraryScreen';
 import MoreScreen from '../screens/MoreScreen';
 import DetailScreen from '../screens/DetailScreen';
 import CourseDetailScreen from '../screens/CourseDetailScreen';
+import TestAlertScreen from '../screens/TestAlertScreen';
 
 // Typed navigators
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -24,6 +25,7 @@ type TabParamList = {
   Explore: undefined;
   Library: undefined;
   More: undefined;
+  test: undefined
 };
 
 const TabNavigator = () => {
@@ -51,6 +53,7 @@ const TabNavigator = () => {
           else if (route.name === 'Explore') iconName = 'explore';
           else if (route.name === 'Library') iconName = 'library-books';
           else if (route.name === 'More') iconName = 'more-horiz';
+          else if (route.test === 'test') iconName = 'more-horiz';
 
           return <Icon name={iconName} size={focused ? 28 : 24} color={color} />;
         },
@@ -61,6 +64,8 @@ const TabNavigator = () => {
       <Tab.Screen name="Explore" component={ExploreScreen} />
       <Tab.Screen name="Library" component={LibraryScreen} />
       <Tab.Screen name="More" component={MoreScreen} />
+      <Tab.Screen name="test" component={TestAlertScreen} />
+      
     </Tab.Navigator>
   );
 };
