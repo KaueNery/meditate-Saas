@@ -24,3 +24,14 @@ export const getCourses = async (): Promise<CourseItem[]> => {
     throw new Error('Failed to fetch courses');
   }
 };
+
+export const saveUser = async ( email: string) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/users`, {
+      email
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to save user');
+  }
+};

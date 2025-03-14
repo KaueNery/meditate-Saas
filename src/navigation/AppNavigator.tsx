@@ -25,7 +25,6 @@ type TabParamList = {
   Explore: undefined;
   Library: undefined;
   More: undefined;
-  test: undefined
 };
 
 const TabNavigator = () => {
@@ -64,7 +63,6 @@ const TabNavigator = () => {
       <Tab.Screen name="Explore" component={ExploreScreen} />
       <Tab.Screen name="Library" component={LibraryScreen} />
       <Tab.Screen name="More" component={MoreScreen} />
-      <Tab.Screen name="test" component={TestAlertScreen} />
       
     </Tab.Navigator>
   );
@@ -92,7 +90,7 @@ const AppNavigator = () => {
           options={({ route }) => ({ 
             title: route.params.meditation.title || 'Meditation Details',
             headerBackTitle: 'Back'
-          })}
+          })} 
         />
 
         <Stack.Screen

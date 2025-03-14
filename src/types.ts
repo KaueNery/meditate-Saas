@@ -23,9 +23,16 @@ export type MeditationItem = {
     image: string;
     fileUrl: string;
   };
+
+  export type UserItem = {
+    id: number;
+    email: string;
+  };
+  
   
   export type RootStackParamList = {
     Index: undefined;
     Detail: { meditation: MeditationItem };
     CourseDetail: { course: CourseItem };
+    UserItem: { user: UserItem };
   };

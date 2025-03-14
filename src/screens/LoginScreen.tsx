@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'reac
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { saveUser } from '../services/api';
 
 const LoginScreen = ({ navigation }: { navigation: any }) => {
   const [email, setEmail] = useState('');
@@ -59,6 +60,9 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       console.log('User created:', userCredential.user);
+      
+      const userSaveResponse = await saveUser(email);
+      console.log('userSaveResponse -> ' + JSON.stringify(userSaveResponse));
   
       setTimeout(() => {
         Alert.alert('Success', 'Account created successfully!', [
