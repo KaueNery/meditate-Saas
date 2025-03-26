@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Audio } from 'expo-av';
 import Slider from '@react-native-community/slider';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { getSessionAudioUrl } from '../services/api';
 
 const DetailScreen = ({ route }) => {
   const { meditation } = route.params; // Get meditation data
@@ -13,7 +14,8 @@ const DetailScreen = ({ route }) => {
 
   // Load audio
   const loadAudio = async () => {
-    const { sound } = await Audio.Sound.createAsync(meditation.audio, { shouldPlay: false });
+    const url = await getSessionAudioUrl(meditation.id);
+    const { sound } = await Audio.Sound.createAsync({ uri: url }, { shouldPlay: false });
     setSound(sound);
 
     sound.setOnPlaybackStatusUpdate((status) => {

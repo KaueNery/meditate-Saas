@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { MeditationItem, CourseItem } from '../types';
 
-const API_BASE_URL = 'http://192.168.100.228:3000';
+const API_BASE_URL = 'http://localhost:3000';
 
 export const getSessions = async (): Promise<MeditationItem[]> => {
   try {
@@ -33,5 +33,14 @@ export const saveUser = async ( email: string) => {
     return response.data;
   } catch (error) {
     throw new Error('Failed to save user');
+  }
+};
+
+export const getSessionAudioUrl = async (sessionId: string): Promise<string> => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/sessions/${sessionId}/audio`);
+    return response.data.url;
+  } catch (error) {
+    throw new Error('Failed to fetch audio URL');
   }
 };

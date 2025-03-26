@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { Session } from '@prisma/client';
 import { SessionsService } from './sessions.service';
 import { CreateSessionDto } from './dto/create-session.dto';
@@ -15,5 +15,11 @@ export class SessionsController {
   @Post()
   async create(@Body() data: CreateSessionDto): Promise<Session> {
     return this.sessionsService.create(data);
+  }
+
+  @Get(':id/audio')
+  async getAudioUrl(@Param('id', ParseIntPipe) id: number) {
+    const url = await this.sessionsService.getPresignedAudioUrl(id);
+    return { url };
   }
 }

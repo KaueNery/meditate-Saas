@@ -1,4 +1,3 @@
-// prisma/schema.prisma
 generator client {
   provider = "prisma-client-js"
 }
@@ -9,29 +8,29 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  sessions  Session[]
-  courses   Course[]
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
+  courses  Course[]
+  sessions Session[]
 }
 
 model Session {
-  id        Int     @id @default(autoincrement())
-  title     String
-  duration  Int
-  fileUrl   String
-  image     String?
-  userId    Int
-  user      User    @relation(fields: [userId], references: [id])
-  courseId  Int?
-  course    Course? @relation(fields: [courseId], references: [id])
+  id       Int     @id @default(autoincrement())
+  title    String
+  duration Int
+  fileUrl  String
+  image    String?
+  userId   Int
+  courseId Int?
+  course   Course? @relation(fields: [courseId], references: [id])
+  user     User    @relation(fields: [userId], references: [id])
 }
 
 model Course {
   id       Int       @id @default(autoincrement())
   title    String
   image    String?
-  sessions Session[]
   userId   Int
   user     User      @relation(fields: [userId], references: [id])
+  sessions Session[]
 }
