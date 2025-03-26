@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Get, Param, Body, ParseIntPipe } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from '@prisma/client';
 
@@ -10,4 +10,16 @@ export class UsersController {
   async createUser(@Body() data: { email: string }): Promise<User> {
     return this.usersService.createUser(data);
   }
+
+  @Get()
+  async findAll(): Promise<User[]> {
+    console.log("INSIDE GET");
+    return this.usersService.findAll();
+  }
+
+  @Get(':id')
+  async findOne(@Param('id', ParseIntPipe) id: number): Promise<User | null> {
+    return this.usersService.findOneById(id);
+  }
+
 }
